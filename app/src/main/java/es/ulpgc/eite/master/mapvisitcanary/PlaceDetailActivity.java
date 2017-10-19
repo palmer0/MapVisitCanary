@@ -27,6 +27,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
 
     }
 
+
     private void setupUI(){
         setContentView(R.layout.activity_place_detail);
 

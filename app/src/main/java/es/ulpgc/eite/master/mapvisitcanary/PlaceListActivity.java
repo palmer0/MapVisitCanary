@@ -1,6 +1,5 @@
 package es.ulpgc.eite.master.mapvisitcanary;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -8,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -84,10 +85,14 @@ public class PlaceListActivity extends AppCompatActivity {
 
                 @Override
                 public void onClick(View view) {
+                    goToPlaceDetails(holder.placeItem.id);
+
+                    /*
                     Context context = view.getContext();
                     Intent intent = new Intent(context, PlaceDetailActivity.class);
                     intent.putExtra(PlaceDetailActivity.PARAM_PLACE_ID, holder.placeItem.id);
                     context.startActivity(intent);
+                    */
                 }
             });
         }
@@ -113,5 +118,35 @@ public class PlaceListActivity extends AppCompatActivity {
                 return placeTitleView.getText().toString();
             }
         }
+    }
+
+    private void goToPlaceDetails(String placeId ) {
+        Intent intent = new Intent(PlaceListActivity.this, PlaceDetailActivity.class);
+        intent.putExtra(PlaceDetailActivity.PARAM_PLACE_ID, placeId);
+        startActivity(intent);
+    }
+
+    private void goToPlaceMap( ) {
+        Intent intent = new Intent(PlaceListActivity.this, PlaceMapActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.list_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.menu_list_button) {
+            goToPlaceMap();
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

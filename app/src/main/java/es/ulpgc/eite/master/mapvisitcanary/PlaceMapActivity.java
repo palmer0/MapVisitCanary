@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -108,5 +110,35 @@ public class PlaceMapActivity extends FragmentActivity implements OnMapReadyCall
     public void onInfoWindowClick(Marker marker) {
         String placeId = marker.getSnippet();
         goToPlaceDetails(placeId);
+
+        /*
+        String title = marker.getTitle();
+        PlaceStore.Place place = placeStore.getPlaceByName(title);
+        goToPlaceDetails(place.placeId);
+        */
+    }
+
+    private void goToPlaceList( ) {
+        Intent intent = new Intent(PlaceMapActivity.this, PlaceListActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.menu_map_button) {
+            goToPlaceList();
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.list_menu, menu);
+        return true;
     }
 }
