@@ -3,6 +3,7 @@ package es.ulpgc.eite.master.mapvisitcanary;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -47,7 +48,13 @@ public class PlaceMapActivity extends AppCompatActivity implements OnMapReadyCal
     private void setupToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle(getTitle());
+        //toolbar.setTitle(getTitle());
+
+        ActionBar actionbar = getSupportActionBar();
+        if (actionbar != null) {
+            actionbar.setTitle(getString(R.string.title_place_map));
+        }
+
     }
 
 

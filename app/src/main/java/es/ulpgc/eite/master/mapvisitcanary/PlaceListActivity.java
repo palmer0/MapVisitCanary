@@ -3,6 +3,7 @@ package es.ulpgc.eite.master.mapvisitcanary;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -40,7 +41,13 @@ public class PlaceListActivity extends AppCompatActivity {
     private void setupToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle(getTitle());
+        //toolbar.setTitle(getTitle());
+
+        ActionBar actionbar = getSupportActionBar();
+        if (actionbar != null) {
+            actionbar.setTitle(getString(R.string.title_place_list));
+        }
+
     }
 
     private void setupRecyclerView() {
@@ -133,10 +140,11 @@ public class PlaceListActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
+        //super.onCreateOptionsMenu(menu);
 
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.list_menu, menu);
+        super.onCreateOptionsMenu(menu);
         return true;
     }
 

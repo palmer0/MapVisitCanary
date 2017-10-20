@@ -31,7 +31,7 @@
 
         <activity
             android:name=".PlaceMapActivity"
-            android:label="@string/title_place_map"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,7 +44,7 @@
 
         <activity
             android:name=".PlaceListActivity"
-            android:label="@string/title_place_list"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <!--
             <intent-filter>
