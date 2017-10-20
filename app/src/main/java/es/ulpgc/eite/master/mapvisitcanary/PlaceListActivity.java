@@ -143,7 +143,7 @@ public class PlaceListActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.menu_list_button) {
+        if (id == R.id.menu_map_button) {
             goToPlaceMap();
             finish();
         }

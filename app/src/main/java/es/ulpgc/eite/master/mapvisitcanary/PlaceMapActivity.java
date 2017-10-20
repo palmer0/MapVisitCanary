@@ -3,15 +3,16 @@ package es.ulpgc.eite.master.mapvisitcanary;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -20,7 +21,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.Arrays;
 import java.util.List;
 
-public class PlaceMapActivity extends FragmentActivity implements OnMapReadyCallback,
+public class PlaceMapActivity extends AppCompatActivity implements OnMapReadyCallback,
         GoogleMap.OnMarkerClickListener, GoogleMap.OnInfoWindowClickListener {
 
     private PlaceStore placeStore;
@@ -28,7 +29,6 @@ public class PlaceMapActivity extends FragmentActivity implements OnMapReadyCall
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         fillPlaceStore();
         setupUI();
     }
@@ -36,12 +36,20 @@ public class PlaceMapActivity extends FragmentActivity implements OnMapReadyCall
     private void setupUI() {
         setContentView(R.layout.activity_place_map);
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment)
-                getSupportFragmentManager().findFragmentById(R.id.map);
+        setupToolbar();
+
+        // Obtain the Map Fragment and get notified when the map is ready to be used.
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
     }
+
+    private void setupToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle(getTitle());
+    }
+
 
     private void fillPlaceStore(){
         Resources res = getResources();
@@ -126,7 +134,7 @@ public class PlaceMapActivity extends FragmentActivity implements OnMapReadyCall
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.menu_map_button) {
+        if (id == R.id.menu_list_button) {
             goToPlaceList();
             finish();
         }
@@ -135,10 +143,10 @@ public class PlaceMapActivity extends FragmentActivity implements OnMapReadyCall
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
 
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.list_menu, menu);
+        getMenuInflater().inflate(R.menu.map_menu, menu);
+        super.onCreateOptionsMenu(menu);
         return true;
     }
 }

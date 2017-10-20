@@ -1,6 +1,7 @@
 <resources>
-    <!--<string name="app_name">MapVisitCanary</string>-->
-    <string name="title_activity_main_map">Visit Canary Map</string>
+
+    <string name="title_place_map">Map of Places to Visit in Canary</string>
+    <string name="title_place_list">List of Places to Visit in Canary</string>
     <string name="app_name">Places to Visit in Canary Islands</string>
-    <string name="title_place_detail">Place to Visit Details</string>
+    <string name="title_place_detail">Place to Visit in Canary</string>
 </resources>

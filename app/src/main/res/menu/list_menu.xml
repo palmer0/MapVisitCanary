@@ -4,7 +4,7 @@
 
 
 <item
-        android:id="@+id/menu_list_button"
+        android:id="@+id/menu_map_button"
         android:icon="@drawable/ic_map_white_24dp"
         android:orderInCategory="100"
         app:showAsAction="always"
