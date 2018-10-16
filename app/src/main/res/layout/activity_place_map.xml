@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="es.ulpgc.eite.master.mapvisitcanary.PlaceMapActivity">
+    tools:context="es.ulpgc.eite.master.mapvisitcanary.map.PlaceMapActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -26,7 +26,7 @@
         android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="es.ulpgc.eite.master.mapvisitcanary.PlaceMapActivity" />
+        tools:context="es.ulpgc.eite.master.mapvisitcanary.map.PlaceMapActivity" />
 
     <!--
     <FrameLayout
@@ -52,5 +52,5 @@
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="es.ulpgc.eite.master.mapvisitcanary.PlaceMapActivity" />
+    tools:context="es.ulpgc.eite.master.mapvisitcanary.map.PlaceMapActivity" />
 -->
