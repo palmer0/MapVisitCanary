@@ -28,8 +28,6 @@ public class PlaceListActivity
     implements PlaceListContract.View {
 
 
-    //private PlaceStore placeStore;
-
     @Override
     protected PlaceListContract.Presenter initPresenter() {
         return new PlaceListPresenter();
@@ -40,11 +38,6 @@ public class PlaceListActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_list);
-
-        //fillPlaceStoreFromResources();
-        fillPlaceStoreFromAssets();
-        setupUI();
-
     }
     */
 
@@ -59,14 +52,6 @@ public class PlaceListActivity
     }
 
 
-    /*
-    private void setupUI(){
-
-        setupToolbar();
-        setupAdapter();
-    }
-    */
-
     private void setupToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -77,13 +62,6 @@ public class PlaceListActivity
         }
     }
 
-    /*
-    private void setupAdapter() {
-
-        RecyclerView recyclerView = findViewById(R.id.place_list);
-        recyclerView.setAdapter(new PlaceListAdapter(placeStore.getPlaces()));
-    }
-    */
 
     private void setupAdapter(List<PlaceStore.Place> places) {
 
@@ -123,84 +101,6 @@ public class PlaceListActivity
     }
 
 
-    /*
-    private void openDetailActivity(String placeId ) {
-        Intent intent =
-            new Intent(PlaceListActivity.this, PlaceDetailActivity.class);
-        intent.putExtra(PlaceDetailActivity.PARAM_PLACE_ID, placeId);
-        startActivity(intent);
-    }
-    */
-
-    /*
-    private JSONArray loadJSONFromAssets(String filename) {
-        try {
-
-            InputStream is = getAssets().open(filename);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-
-            String json = new String(buffer, "UTF-8");
-            JSONArray array = new JSONArray(json);
-            return array;
-
-        } catch (Exception ex) {
-
-        }
-
-        //return new JSONArray();
-        return null;
-    }
-
-    private void fillPlaceStoreFromAssets(){
-        List<String> titles = new ArrayList();
-        List<String> descriptions = new ArrayList();
-        List<String> pictures = new ArrayList();
-        List<String> locations = new ArrayList();
-
-        JSONArray array = loadJSONFromAssets("places.json");
-        for(int index=0; index < array.length(); index++){
-            try {
-
-                JSONObject obj = array.getJSONObject(index);
-                String title = obj.getString(PlaceStore.Place.KEY_TITLE);
-                String description = obj.getString(PlaceStore.Place.KEY_DESC);
-                String picture = obj.getString(PlaceStore.Place.KEY_PIC);
-                String location = obj.getString(PlaceStore.Place.KEY_LOC);
-
-                locations.add(location);
-                titles.add(title);
-                pictures.add(picture);
-                descriptions.add(description);
-
-            } catch (JSONException e) {
-
-            }
-        }
-
-        placeStore = new PlaceStore(titles, descriptions, pictures, locations);
-
-        //Log.d("JSONArray", placeStore.toJSONArray().toString());
-    }
-
-    private void fillPlaceStoreFromResources(){
-        Resources res = getResources();
-        List<String> titles =
-                Arrays.asList(res.getStringArray(R.array.places_titles));
-        List<String> descriptions =
-                Arrays.asList(res.getStringArray(R.array.places_descriptions));
-        List<String> pictures =
-                Arrays.asList(res.getStringArray(R.array.places_pictures));
-        List<String> locations =
-                Arrays.asList(res.getStringArray(R.array.places_locations));
-
-        placeStore = new PlaceStore(titles, descriptions, pictures, locations);
-
-        //Log.d("JSONArray", placeStore.toJSONArray().toString());
-    }
-    */
 
     class PlaceListAdapter
             extends RecyclerView.Adapter<PlaceListAdapter.PlaceViewHolder> {
@@ -223,7 +123,6 @@ public class PlaceListActivity
             holder.placeItem = places.get(position);
             holder.placeTitleView.setText(places.get(position).title);
 
-            //holder.placeView.setOnClickListener(view -> openDetailActivity(holder.placeItem.id));
             holder.placeView.setOnClickListener(view ->
                 presenter.placeClicked(holder.placeItem.id)
             );

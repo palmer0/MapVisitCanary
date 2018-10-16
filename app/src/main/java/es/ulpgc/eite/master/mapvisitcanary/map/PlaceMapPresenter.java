@@ -22,15 +22,6 @@ public class PlaceMapPresenter
     super.onPresenterCreated();
     Log.d("VisitCanary.Map.Presenter", "onPresenterCreated");
 
-    /*
-    if(isViewAttached()) {
-      //model.initStore(getView().getManagedContext());
-
-      //model.fillPlaceStoreFromResources(getView().getManagedContext());
-      //model.fillPlaceStoreFromAssets(getView().getManagedContext());
-      model.init(getView().getManagedContext());
-    }
-    */
   }
 
   @SuppressLint("LongLogTag")

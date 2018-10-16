@@ -18,10 +18,6 @@ public class PlaceDetailActivity
     //extends BaseActivity<PlaceDetailContract.View, PlaceDetailContract.Presenter>
     implements PlaceDetailContract.View {
 
-    //public static final String PARAM_PLACE_ID = "place_to_visit_id";
-
-    //private PlaceStore placeStore;
-
 
     @Override
     protected PlaceDetailContract.Presenter initPresenter() {
@@ -34,9 +30,6 @@ public class PlaceDetailActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_detail);
-
-        fillPlaceStoreFromResources();
-        setupUI();
     }
     */
 
@@ -58,42 +51,6 @@ public class PlaceDetailActivity
         }
     }
 
-    /*
-    private void setupUI(){
-
-        String placeId = getIntent().getStringExtra(PARAM_PLACE_ID);
-        PlaceStore.Place place = placeStore.getPlaceById(placeId);
-
-        if (place != null) {
-            setupToolbar(place.title);
-
-            TextView placeDetail = findViewById(R.id.place_detail);
-            placeDetail.setText(place.description);
-            ImageView placePicture = findViewById(R.id.place_picture);
-
-            int resId= getResources().getIdentifier(
-                    place.picture, "drawable", getPackageName());
-            placePicture.setImageResource(resId);
-        }
-    }
-    */
-
-
-    /*
-    private void fillPlaceStoreFromResources(){
-        Resources res = getResources();
-        List<String> titles =
-                Arrays.asList(res.getStringArray(R.array.places_titles));
-        List<String> descriptions =
-                Arrays.asList(res.getStringArray(R.array.places_descriptions));
-        List<String> pictures =
-                Arrays.asList(res.getStringArray(R.array.places_pictures));
-        List<String> locations =
-                Arrays.asList(res.getStringArray(R.array.places_locations));
-
-        placeStore = new PlaceStore(titles, descriptions, pictures, locations);
-    }
-    */
 
     private void setupToolbar(String title) {
         Toolbar toolbar = findViewById(R.id.toolbar);

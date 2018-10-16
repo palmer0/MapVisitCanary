@@ -36,7 +36,6 @@ public class PlaceStore {
             JSONObject obj = place.toJSONObject();
             Log.d("JSONObject", obj.toString());
             array.put(obj);
-            //array.put(place.toJSONObject());
         }
 
         return array;

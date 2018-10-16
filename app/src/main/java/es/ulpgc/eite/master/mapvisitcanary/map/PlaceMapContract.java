@@ -28,12 +28,7 @@ interface PlaceMapContract {
 
   interface Model extends BaseContract.Model {
 
-    //void init(Context managedContext);
-    //void initStore(Context managedContext);
-    //List<PlaceStore.Place> getPlaces();
     List<PlaceStore.Place> getPlaces(Context managedContext);
-    //void fillPlaceStoreFromAssets(Context managedContext);
-    //void fillPlaceStoreFromResources(Context managedContext);
   }
 
 }
