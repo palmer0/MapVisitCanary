@@ -52,17 +52,21 @@ public class PlaceListActivity extends AppCompatActivity {
 
     private void setupRecyclerView() {
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.place_list);
+        RecyclerView recyclerView = findViewById(R.id.place_list);
         recyclerView.setAdapter(new PlaceRecyclerViewAdapter(placeStore.getPlaces()));
     }
 
 
     private void fillPlaceStore(){
         Resources res = getResources();
-        List<String> titles = Arrays.asList(res.getStringArray(R.array.places_titles));
-        List<String> details = Arrays.asList(res.getStringArray(R.array.places_details));
-        List<String> pictures = Arrays.asList(res.getStringArray(R.array.places_pictures));
-        List<String> locations = Arrays.asList(res.getStringArray(R.array.places_locations));
+        List<String> titles =
+                Arrays.asList(res.getStringArray(R.array.places_titles));
+        List<String> details =
+                Arrays.asList(res.getStringArray(R.array.places_details));
+        List<String> pictures =
+                Arrays.asList(res.getStringArray(R.array.places_pictures));
+        List<String> locations =
+                Arrays.asList(res.getStringArray(R.array.places_locations));
 
         placeStore = new PlaceStore(titles, details, pictures, locations);
     }
@@ -128,13 +132,15 @@ public class PlaceListActivity extends AppCompatActivity {
     }
 
     private void goToPlaceDetails(String placeId ) {
-        Intent intent = new Intent(PlaceListActivity.this, PlaceDetailActivity.class);
+        Intent intent = new Intent(
+                PlaceListActivity.this, PlaceDetailActivity.class);
         intent.putExtra(PlaceDetailActivity.PARAM_PLACE_ID, placeId);
         startActivity(intent);
     }
 
     private void goToPlaceMap( ) {
-        Intent intent = new Intent(PlaceListActivity.this, PlaceMapActivity.class);
+        Intent intent = new Intent(
+                PlaceListActivity.this, PlaceMapActivity.class);
         startActivity(intent);
     }
 

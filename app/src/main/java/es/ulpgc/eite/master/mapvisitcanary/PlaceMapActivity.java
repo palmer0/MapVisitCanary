@@ -22,8 +22,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.Arrays;
 import java.util.List;
 
-public class PlaceMapActivity extends AppCompatActivity implements OnMapReadyCallback,
-        GoogleMap.OnMarkerClickListener, GoogleMap.OnInfoWindowClickListener {
+public class PlaceMapActivity extends AppCompatActivity
+        implements OnMapReadyCallback,
+            GoogleMap.OnMarkerClickListener, GoogleMap.OnInfoWindowClickListener {
 
     private PlaceStore placeStore;
 
@@ -40,7 +41,8 @@ public class PlaceMapActivity extends AppCompatActivity implements OnMapReadyCal
         setupToolbar();
 
         // Obtain the Map Fragment and get notified when the map is ready to be used.
-        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+        MapFragment mapFragment =
+                (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
     }
@@ -60,10 +62,14 @@ public class PlaceMapActivity extends AppCompatActivity implements OnMapReadyCal
 
     private void fillPlaceStore(){
         Resources res = getResources();
-        List<String> titles = Arrays.asList(res.getStringArray(R.array.places_titles));
-        List<String> details = Arrays.asList(res.getStringArray(R.array.places_details));
-        List<String> pictures = Arrays.asList(res.getStringArray(R.array.places_pictures));
-        List<String> locations = Arrays.asList(res.getStringArray(R.array.places_locations));
+        List<String> titles =
+                Arrays.asList(res.getStringArray(R.array.places_titles));
+        List<String> details =
+                Arrays.asList(res.getStringArray(R.array.places_details));
+        List<String> pictures =
+                Arrays.asList(res.getStringArray(R.array.places_pictures));
+        List<String> locations =
+                Arrays.asList(res.getStringArray(R.array.places_locations));
 
         placeStore = new PlaceStore(titles, details, pictures, locations);
     }
@@ -100,7 +106,8 @@ public class PlaceMapActivity extends AppCompatActivity implements OnMapReadyCal
             int height = getResources().getDisplayMetrics().heightPixels;
             int padding = (int) (width * 0.12); // offset from edges of the map 12% of screen
 
-            CameraUpdate camera = CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding);
+            CameraUpdate camera =
+                    CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding);
             googleMap.moveCamera(camera);
             //googleMap.animateCamera(camera);
         }
@@ -108,7 +115,8 @@ public class PlaceMapActivity extends AppCompatActivity implements OnMapReadyCal
 
 
     private void goToPlaceDetails(String placeId ) {
-        Intent intent = new Intent(PlaceMapActivity.this, PlaceDetailActivity.class);
+        Intent intent = new Intent(
+                PlaceMapActivity.this, PlaceDetailActivity.class);
         intent.putExtra(PlaceDetailActivity.PARAM_PLACE_ID, placeId);
         startActivity(intent);
     }
@@ -134,7 +142,8 @@ public class PlaceMapActivity extends AppCompatActivity implements OnMapReadyCal
     }
 
     private void goToPlaceList( ) {
-        Intent intent = new Intent(PlaceMapActivity.this, PlaceListActivity.class);
+        Intent intent = new Intent(
+                PlaceMapActivity.this, PlaceListActivity.class);
         startActivity(intent);
     }
 

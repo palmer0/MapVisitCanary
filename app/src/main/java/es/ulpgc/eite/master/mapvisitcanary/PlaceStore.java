@@ -10,7 +10,10 @@ public class PlaceStore {
     private List<Place> places = new ArrayList();
 
 
-    public PlaceStore(List<String> titles, List<String> descs, List<String> pics, List<String> locs) {
+    public PlaceStore(
+            List<String> titles, List<String> descs,
+            List<String> pics, List<String> locs) {
+
         for (int position = 0; position < titles.size(); position++) {
             String title = titles.get(position);
             String detail = descs.get(position);
@@ -25,7 +28,9 @@ public class PlaceStore {
         places.add(place);
     }
 
-    private Place createPlace(int position, String title, String desc, String pic, String loc ) {
+    private Place createPlace(
+            int position, String title, String desc, String pic, String loc ) {
+
         return new Place(String.valueOf(position), title, desc, pic, loc);
     }
 
@@ -51,7 +56,10 @@ public class PlaceStore {
         public final String location;
 
 
-        public Place(String id, String title, String details, String picture, String location) {
+        public Place(
+                String id, String title,
+                String details, String picture, String location) {
+
             this.id = id;
             this.title = title;
             this.details = details;

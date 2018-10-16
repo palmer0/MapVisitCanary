@@ -37,27 +37,32 @@ public class PlaceDetailActivity extends AppCompatActivity {
         if (place != null) {
             setupToolbar(place.title);
 
-            TextView placeDetail = (TextView) findViewById(R.id.place_detail);
+            TextView placeDetail = findViewById(R.id.place_detail);
             placeDetail.setText(place.details);
-            ImageView placePicture = (ImageView) findViewById(R.id.place_picture);
+            ImageView placePicture = findViewById(R.id.place_picture);
 
-            int resId= getResources().getIdentifier(place.picture, "drawable", getPackageName());
+            int resId= getResources().getIdentifier(
+                    place.picture, "drawable", getPackageName());
             placePicture.setImageResource(resId);
         }
     }
 
     private void fillPlaceStore(){
         Resources res = getResources();
-        List<String> titles = Arrays.asList(res.getStringArray(R.array.places_titles));
-        List<String> details = Arrays.asList(res.getStringArray(R.array.places_details));
-        List<String> pictures = Arrays.asList(res.getStringArray(R.array.places_pictures));
-        List<String> locations = Arrays.asList(res.getStringArray(R.array.places_locations));
+        List<String> titles =
+                Arrays.asList(res.getStringArray(R.array.places_titles));
+        List<String> details =
+                Arrays.asList(res.getStringArray(R.array.places_details));
+        List<String> pictures =
+                Arrays.asList(res.getStringArray(R.array.places_pictures));
+        List<String> locations =
+                Arrays.asList(res.getStringArray(R.array.places_locations));
 
         placeStore = new PlaceStore(titles, details, pictures, locations);
     }
 
     private void setupToolbar(String title) {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         ActionBar actionbar = getSupportActionBar();
