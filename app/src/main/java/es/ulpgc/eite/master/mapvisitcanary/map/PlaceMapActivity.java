@@ -88,6 +88,7 @@ public class PlaceMapActivity
         for (PlaceStore.Place place: places) {
 
             try {
+
                 String[] locations = place.location.split(",");
                 double latitude = Double.parseDouble(locations[0]);
                 double longitude = Double.parseDouble(locations[1]);
