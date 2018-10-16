@@ -12,6 +12,7 @@ import es.ulpgc.mvp.arch.BaseModel;
 public class PlaceListModel
     extends BaseModel<PlaceListContract.Presenter> implements PlaceListContract.Model {
 
+  private PlaceRepository repository;
 
   @Override
   public void onPresenterCreated() {
@@ -19,11 +20,18 @@ public class PlaceListModel
     Log.d("VisitCanary.List.Model", "onPresenterCreated");
   }
 
+  public void initRepository(Context managedContext){
+    repository = PlaceRepository.getInstance(managedContext);
+  }
 
-  @Override
+  public List<PlaceStore.Place> getPlaces() {
+    return repository.getPlaces();
+  }
+
+  /*
   public List<PlaceStore.Place> getPlaces(Context managedContext) {
     return PlaceRepository.getInstance(managedContext).getPlaces();
   }
-
+  */
 
 }

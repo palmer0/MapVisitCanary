@@ -23,6 +23,9 @@ public class PlaceDetailPresenter
     super.onPresenterCreated();
     Log.d("VisitCanary.List.Presenter", "onPresenterCreated");
 
+    if(isViewAttached()) {
+      model.initRepository(getView().getManagedContext());
+    }
   }
 
   @SuppressLint("LongLogTag")
@@ -52,7 +55,8 @@ public class PlaceDetailPresenter
     if(isViewAttached()) {
 
       String placeId = getInStateBundle().getString(PARAM_PLACE_ID);
-      PlaceStore.Place place = model.getPlace(getView().getManagedContext(), placeId);
+      //PlaceStore.Place place = model.getPlace(getView().getManagedContext(), placeId);
+      PlaceStore.Place place = model.getPlace( placeId);
 
       if (place != null) {
         getView().setupUI(place);

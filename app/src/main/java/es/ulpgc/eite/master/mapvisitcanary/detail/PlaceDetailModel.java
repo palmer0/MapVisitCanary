@@ -11,15 +11,26 @@ public class PlaceDetailModel
     extends BaseModel<PlaceDetailContract.Presenter> implements PlaceDetailContract.Model {
 
 
+  private PlaceRepository repository;
+
   @Override
   public void onPresenterCreated() {
     super.onPresenterCreated();
     Log.d("VisitCanary.List.Model", "onPresenterCreated");
   }
 
-  @Override
+  public void initRepository(Context managedContext){
+    repository = PlaceRepository.getInstance(managedContext);
+  }
+
+  public PlaceStore.Place getPlace( String placeId) {
+    return repository.getPlace(placeId);
+  }
+
+  /*
   public PlaceStore.Place getPlace(Context managedContext, String placeId) {
     return PlaceRepository.getInstance(managedContext).getPlace(placeId);
   }
+  */
 
 }

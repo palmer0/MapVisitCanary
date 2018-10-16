@@ -20,7 +20,9 @@ interface PlaceDetailContract {
 
   interface Model extends BaseContract.Model {
 
-    PlaceStore.Place getPlace(Context managedContext, String placeId);
+    void initRepository(Context managedContext);
+    PlaceStore.Place getPlace(String placeId);
+    //PlaceStore.Place getPlace(Context managedContext, String placeId);
   }
 
 }
